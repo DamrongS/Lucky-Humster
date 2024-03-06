@@ -9,6 +9,9 @@ class Entity
         this.speed = 5;
         this.direction = 1;
         this.isJumping = false;
+
+        this.holdingLeft = false;
+        this.holdingRight = false;
     }
 
     show()
@@ -31,9 +34,13 @@ class Entity
         {
             this.vel.y = 0;
         }
+        else if(this.isJumping == true)
+        {
+            this.vel.y = -15;
+        }
         else
         {
-            this.isJumping = true;
+            this.isJumping = false;
         }
 
         this.pos.add(this.vel);
@@ -51,10 +58,9 @@ class Entity
         this.vel.x = val * this.speed;
     }
 
-    jump()
+    jump(bool   =true)
     {
-        this.isJumping = true;
-        this.vel.y = -15;
+        this.isJumping = bool;
     }
 
 }

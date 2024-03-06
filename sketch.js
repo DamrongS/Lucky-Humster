@@ -46,4 +46,8 @@ function keyReleased()
   {
     plr.right(0);
   }
+  if(key == " ")
+  {
+    plr.jump(false);
+  }
 }
