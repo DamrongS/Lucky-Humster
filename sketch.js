@@ -90,8 +90,22 @@ function draw()
 
   }
 
+  for(let i = bullets.length -1; i >= 0; i--)
+  {
+    bullets[i].show();
+    bullets[i].update();
+    if(bullets[i].edging())
+    {
+      bullets.splice(i, 1);
+    }
+  }
+
   plr.show();
   plr.update();
+  if(plr.holdingMouse)
+  {
+
+  }
 
   Luck = (gathered/maxLuck) * 100 || 0;
   imageMode(CENTER)
@@ -102,6 +116,11 @@ function draw()
   text(int(monkey), 45, 60);
 
   showInventory();
+}
+
+function mousePressed()
+{
+  createBullet();
 }
 
 function keyPressed()
@@ -297,4 +316,9 @@ function findReward()
     }
 
     return reward;
+}
+
+function createBullet(xScale, yScale) {
+  
+  bullets.push(new Projectile("bullet.png", plr.pos.x, plr.pos.y, xScale, yScale, random(5, 10), random(5, 10), createVector(mouseX, mouseY)));
 }

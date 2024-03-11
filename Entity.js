@@ -20,6 +20,7 @@ class Entity
 
         this.holdingLeft = false;
         this.holdingRight = false;
+        this.holdingMouse = false;
 
         this.floatAngle = 0;
 
